@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
         val diceImage: ImageView = findViewById(R.id.imageView)
 
-       // Determime the image ID Base on the diceRoll result
+       // Determine the image ID Base on the diceRoll result
 
         val drawbleResorce = when (diceRoll) {
             1 -> R.drawable.dice_1
@@ -37,14 +38,23 @@ class MainActivity : AppCompatActivity() {
             else -> R.drawable.dice_6
         }
 
-        // Use the Drawble ID to show the Dice Image in the layout
+        //Show toast Messages
+        val toast = when (diceRoll) {
+            1 -> Toast.makeText(this@MainActivity, "You Get 1", Toast.LENGTH_SHORT).show()
+            2 -> Toast.makeText(this@MainActivity, "You Get 2", Toast.LENGTH_SHORT).show()
+            3 -> Toast.makeText(this@MainActivity, "You Get 3", Toast.LENGTH_SHORT).show()
+            4 -> Toast.makeText(this@MainActivity, "You Get 4", Toast.LENGTH_SHORT).show()
+            5 -> Toast.makeText(this@MainActivity, "You Get 5", Toast.LENGTH_SHORT).show()
+            else -> Toast.makeText(this@MainActivity, "You Get 6", Toast.LENGTH_SHORT).show()
+        }
+
+        // Use the Drawable ID to show the Dice Image in the layout
 
         diceImage.setImageResource(drawbleResorce)
 
         // Update the content description
 
         diceImage.contentDescription = diceRoll.toString()
-
     }
 }
 
